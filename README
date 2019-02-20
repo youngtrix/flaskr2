@@ -7,7 +7,7 @@
 
       A mysql powered thumble blog application
 
-    ~ Why not use Flaskr2?
+    ~ Why to use Flaskr2?
       Though Flaskr is a famous programme introduced by the official tutorial, I
       met some problem when I installed it in Python 3.x. I found that it points 
       to the sqlite3: something was wrong when you didn't install libsqlite-devel
