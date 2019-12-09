@@ -22,13 +22,14 @@ app = Flask(__name__)
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DB_NAME='flaskr2',
-    DB_HOST='host.docker.internal',
+    DB_HOST='127.0.0.1',
     DB_USER='root',
     DB_PWD='rst2012',
     DEBUG=True,
     SECRET_KEY='development key',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='default',
+    UPLOAD_FOLDER='upload'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -101,6 +102,23 @@ def add_entry():
     flash('New entry was successfully posted')
     return redirect(url_for('show_entries'))
 
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'GET':
+        return render_template('upload_file.html')
+    else:
+        if 'flaskr2_file' not in request.files:
+            flash('No file part')
+        file = request.files['flaskr2_file']
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        flash('Upload Successfully!')
+        return redirect('/upload')
+
+@app.route('/files', methods=['GET'])
+def uploadfiles():
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'])
+    files = os.listdir(file_path)
+    return render_template('upload_files.html', files=files)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

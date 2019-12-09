@@ -21,16 +21,18 @@ Now you can use flaskr2 instead of flaskr to study flask, forget the sqlite, enj
 - edit the configuration in the flaskr2.py file or export an FLASKR_SETTINGS environment variable pointing to a configuration file.
 
 - Instruct flask to use the right application
-   - `#export FLASK_APP=flaskr2.py`
+   - `#export FLASK_APP=flaskr2.py` 
    - `#export FLASK_ENV=development`
 
 - initialize the database with this command:
    - `#flask initdb`
    - `#python2.7 -m flask initdb`
-
+   
 - now you can run flaskr2:
    - `#flask run`
    - `#python2.7 -m flask run`
+   
+> If you run the app in windows, you have to use `SET` instead of `export` to instruct flask.  
 
  the application will greet you on
  http://localhost:5000/ OR

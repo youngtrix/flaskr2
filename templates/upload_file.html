@@ -12,15 +12,13 @@
     </form>
   {% endif %}
   <ul class="entries">
-  {% for entry in entries %}
-    <li><h2>{{ entry[0] }}</h2>{{ entry[1]|safe }}
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
-  <hr />
-  <ul class="entries">
-      <li><a href="/upload">文件上传</a></li>
-      <li><a href="/files">上传文件列表</a></li>
+      <li>
+          <h2>文件上传</h2>
+          <p>
+              <form name="form1" action="/upload" method="post" enctype="multipart/form-data">
+                  <input type="file" name="flaskr2_file" id="flaskr2_file" />&nbsp;&nbsp;<input type="submit" value="上传" />
+              </form>
+          </p>
+      </li>
   </ul>
 {% endblock %}

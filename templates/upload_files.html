@@ -12,15 +12,15 @@
     </form>
   {% endif %}
   <ul class="entries">
-  {% for entry in entries %}
-    <li><h2>{{ entry[0] }}</h2>{{ entry[1]|safe }}
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
-  <hr />
-  <ul class="entries">
-      <li><a href="/upload">文件上传</a></li>
-      <li><a href="/files">上传文件列表</a></li>
+      <li>
+          <h2>上传文件列表</h2>
+          <ul>
+            {% for file in files %}
+                <li>{{ file }}</li>
+              {% else %}
+                <li><em>Unbelievable.  No files here so far</em></li>
+              {% endfor %}
+          </ul>
+      </li>
   </ul>
 {% endblock %}
